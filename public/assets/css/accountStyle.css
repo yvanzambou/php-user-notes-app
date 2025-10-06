@@ -1,0 +1,82 @@
+body {
+    font-family: system-ui, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007BFF;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.logout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+.note-section {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.note-list {
+    margin-top: 20px;
+}
+
+.note-item {
+    background: #f1f3f5;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.note-item small {
+    color: #666;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.add-form textarea {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    height: 60px;
+}
+
+.add-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #218838;
+}
