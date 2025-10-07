@@ -57,17 +57,16 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 ## 🧑‍💻 Verwendung
 
 1. **Registrieren:**
-   Erstelle ein neues Benutzerkonto unter /register.php
+      - Erstelle ein neues Benutzerkonto unter /register.php
 
 2. **Anmelden:**
-   Logge dich über /index.php ein
+      - Logge dich über /index.php ein
 
 3. **Notizen hinzufügen:**
-   Auf der Benutzerseite (userAccount.php) kannst du Texte über den „speichern“-Button hinzufügen.
-   Diese werden automatisch in der Datenbank gespeichert.
+      - Auf der Benutzerseite (userAccount.php) kannst du Texte über den „speichern“-Button hinzufügen. Diese werden automatisch in der Datenbank gespeichert.
 
 4. **Abmelden:**
-   Über den Button „Abmelden“ wird die aktuelle Session beendet.
+      - Über den Button „Abmelden“ wird die aktuelle Session beendet.
 
 ---
 
