@@ -43,7 +43,7 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 2. **Projekt in deinen lokalen Serverordner legen**:
       C:\xampp\htdocs\php-user-notes-app
 
-3. Server starten
+3. **Server starten**
       - Apache & MySQL in XAMPP aktivieren
       - Im Browser aufrufen: http://localhost/php-user-notes-app/public/
 
@@ -56,15 +56,15 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 
 ## 🧑‍💻 Verwendung
 
-   ### Registrieren:
-   Erstelle ein neues Benutzerkonto unter /register.php
+      **Registrieren:**
+      Erstelle ein neues Benutzerkonto unter /register.php
 
-   ### Anmelden:
-   Logge dich über /index.php ein
+      **Anmelden:**
+      Logge dich über /index.php ein
 
-   ### Notizen hinzufügen:
-   Auf der Benutzerseite (userAccount.php) kannst du Texte über den „+“-Button hinzufügen.
-   Diese werden automatisch in der Datenbank gespeichert.
+      **Notizen hinzufügen:**
+      Auf der Benutzerseite (userAccount.php) kannst du Texte über den „speichern“-Button hinzufügen.
+      Diese werden automatisch in der Datenbank gespeichert.
 
-   ### Abmelden:
-   Über den Button „Abmelden“ wird die aktuelle Session beendet.
+      **Abmelden:**
+      Über den Button „Abmelden“ wird die aktuelle Session beendet.
