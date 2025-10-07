@@ -57,7 +57,7 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 ## 🧑‍💻 Verwendung
 
 1. **Registrieren:**
-      - Erstelle ein neues Benutzerkonto unter /register.php
+      - Erstelle ein neues Benutzerkonto unter **/register.php**
 
 2. **Anmelden:**
       - Logge dich über /index.php ein
