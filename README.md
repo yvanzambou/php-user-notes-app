@@ -56,15 +56,40 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 
 ## 🧑‍💻 Verwendung
 
-      **Registrieren:**
-      Erstelle ein neues Benutzerkonto unter /register.php
+   1. Registrieren:
+   Erstelle ein neues Benutzerkonto unter /register.php
 
-      **Anmelden:**
-      Logge dich über /index.php ein
+   2. Anmelden:
+   Logge dich über /index.php ein
 
-      **Notizen hinzufügen:**
-      Auf der Benutzerseite (userAccount.php) kannst du Texte über den „speichern“-Button hinzufügen.
-      Diese werden automatisch in der Datenbank gespeichert.
+   3. Notizen hinzufügen:
+   Auf der Benutzerseite (userAccount.php) kannst du Texte über den „speichern“-Button hinzufügen.
+   Diese werden automatisch in der Datenbank gespeichert.
 
-      **Abmelden:**
-      Über den Button „Abmelden“ wird die aktuelle Session beendet.
+   4. Abmelden:
+   Über den Button „Abmelden“ wird die aktuelle Session beendet.
+
+---
+
+## 🧱 Sicherheit
+
+      - Passwörter werden mit password_hash() sicher gespeichert
+      - Login-Prüfung mit password_verify()
+      - Keine SQL-Injections dank Prepared Statements
+      - Session-basierte Zugriffskontrolle für geschützte Seiten
+      - UTF-8 / UTF-8mb4 für internationale Zeichenunterstützung
+
+---
+
+## 📄 Hinweis  
+Dieses Projekt wurde entwickelt, um grundlegende PHP-Fähigkeiten zu demonstrieren — darunter PDO, Sessions, Passwortsicherheit und dynamische Datenbankabfragen.  
+
+---
+
+## 👤 Autor  
+**Yvan Zambou**  
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profil-blue?logo=linkedin)](https://linkedin.com/in/yvan-zambou-29aba9261)  
+[![GitHub](https://img.shields.io/badge/GitHub-Projekte-black?logo=github)](https://github.com/yvanzambou)  
+
+---
