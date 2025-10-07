@@ -21,9 +21,9 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 
 | Bereich | Technologie |
 |----------|--------------|
-| Backend | PHP 8.x |
+| Backend | PHP 8.2.12 |
 | Datenbank | MySQL / MariaDB |
-| Server | Apache (z. B. über XAMPP oder Laragon) |
+| Server | Apache (XAMPP) |
 | Styling | HTML5, CSS3 |
 | Sicherheit | Passwort-Hashing, Prepared Statements, Sessions |
 
@@ -44,7 +44,7 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
       C:\xampp\htdocs\php-user-notes-app
 
 3. **Server starten**
-      - Apache & MySQL in XAMPP aktivieren
+      - Apache & MySQL in XAMPP starten
       - Im Browser aufrufen: http://localhost/php-user-notes-app/public/
 
 4. **Automatische Datenbankerstellung**
