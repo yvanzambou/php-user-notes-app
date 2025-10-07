@@ -41,14 +41,14 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
    git clone https://github.com/yvanzambou/php-user-notes-app.git
 
 2. **Projekt in deinen lokalen Serverordner legen**:
-      C:\xampp\htdocs\php-user-notes-app
+      - C:\xampp\htdocs\php-user-notes-app
 
 3. **Server starten**
       - Apache & MySQL in XAMPP starten
       - Im Browser aufrufen: http://localhost/php-user-notes-app/public/
 
 4. **Automatische Datenbankerstellung**
-      Beim ersten Start erstellt das Skript automatisch:
+      - Beim ersten Start erstellt das Skript automatisch:
       - die Datenbank **userdb**
       - die Tabellen **users** und **notes**
 
