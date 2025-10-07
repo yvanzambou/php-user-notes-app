@@ -81,14 +81,34 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 ## 🖼️ Screenshots  
 
 <p align="center">
-  <img src="public/assets/img/php-app1.png" alt="Login-Seite" width="500" />
+  <img src="public/assets/img/php-app1.png" alt="Registrierungsseite" width="600" />
   <br>
   <em>Abbildung 1: Registrierungsseite</em>
 </p>
-![Anmeldung-Seite mit Flash-Message](public/assets/img/php-app2.png "Anmeldungsseite mit Flash-Message")
-![Anmeldeversuche mit falschen Daten](public/assets/img/php-app4.png "Anmeldeversuche mit falschen Daten")
-![Benutzerseite](public/assets/img/php-app5.png "Benutzerseite")
-![Erfolgreiche Abmeldung](public/assets/img/php-app3.png "Anmeldung-Seite nach erfolgreicher Abmeldung")
+
+<p align="center">
+  <img src="public/assets/img/php-app2.png" alt="Anmeldungsseite mit Flash-Message" width="600" />
+  <br>
+  <em>Abbildung 2: Anmeldungsseite mit Flash-Message</em>
+</p>
+
+<p align="center">
+  <img src="public/assets/img/php-app4.png" alt="Anmeldeversuche mit falschen Daten" width="600" />
+  <br>
+  <em>Abbildung 3: Anmeldeversuche mit falschen Daten</em>
+</p>
+
+<p align="center">
+  <img src="public/assets/img/php-app5.png" alt="Benutzerseite" width="600" />
+  <br>
+  <em>Abbildung 4: Benutzerseite</em>
+</p>
+
+<p align="center">
+  <img src="public/assets/img/php-app3.png" alt="Nach erfolgreicher Abmeldung" width="600" />
+  <br>
+  <em>Abbildung 5: Nach erfolgreicher Abmeldung</em>
+</p>
 
 ---
 
