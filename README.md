@@ -101,9 +101,9 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 <p align="center">
   <img src="public/assets/img/php-app5.png" alt="Benutzerseite" width="600" />
   <br>
-  <em>Abbildung 4: Benutzerseite</em><br>
+  <em>Abbildung 4: Benutzerseite</em>
 </p>
-
+<br>
 <p align="center">
   <img src="public/assets/img/php-app3.png" alt="Nach erfolgreicher Abmeldung" width="600" />
   <br>
