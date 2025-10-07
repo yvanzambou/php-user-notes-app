@@ -49,6 +49,8 @@
             if (isset($_SESSION["flash_message"])) {
                 echo '<div id="flash-message" class="success-message">' . htmlspecialchars($_SESSION["flash_message"]) . '</div>';
                 unset($_SESSION["flash_message"]);
+                session_unset();
+                session_destroy();
             }
 
             if (!empty($error)): ?>

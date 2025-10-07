@@ -39,7 +39,7 @@
     </head>
     <body>
         <div class="account-header">
-            <h2>Hallo, <?= htmlspecialchars($username) ?>!</h2>
+            <h2>Hallo <?= htmlspecialchars($username) ?>,</h2>
             <form action="logout.php" method="post" style="margin:0;">
                 <button class="logout-btn" type="submit">Abmelden</button>
             </form>
@@ -50,7 +50,7 @@
 
             <form class="add-form" action="userAccount.php" method="POST">
                 <textarea name="note" placeholder="Neuen Text eingeben..." required></textarea>
-                <button type="submit" class="add-btn">+</button>
+                <button type="submit" class="add-btn">speichern</button>
             </form>
 
             <div class="note-list">
@@ -58,7 +58,7 @@
                     <?php foreach ($notes as $note): ?>
                         <div class="note-item">
                             <p><?= nl2br(htmlspecialchars($note["content"])) ?></p>
-                            <small><?= $note["created_at"] ?></small>
+                            <small><?= date("d.m.Y H:i", strtotime($note["created_at"])) ?></small>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>

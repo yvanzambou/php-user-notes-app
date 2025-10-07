@@ -33,11 +33,38 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 
 ### 🔸 Voraussetzungen
 - XAMPP installieren
-- PHP-Version ≥ 8.0
-- MySQL oder MariaDB aktiv
 
 ### 🔸 Schritte
 
 1. **Repository klonen oder herunterladen**
    ```bash
    git clone https://github.com/yvanzambou/php-user-notes-app.git
+
+2. **Projekt in deinen lokalen Serverordner legen**:
+      C:\xampp\htdocs\php-user-notes-app
+
+3. Server starten
+      - Apache & MySQL in XAMPP aktivieren
+      - Im Browser aufrufen: http://localhost/php-user-notes-app/public/
+
+4. **Automatische Datenbankerstellung**
+      Beim ersten Start erstellt das Skript automatisch:
+      - die Datenbank **userdb**
+      - die Tabellen **users** und **notes**
+
+---
+
+## 🧑‍💻 Verwendung
+
+   ### Registrieren:
+   Erstelle ein neues Benutzerkonto unter /register.php
+
+   ### Anmelden:
+   Logge dich über /index.php ein
+
+   ### Notizen hinzufügen:
+   Auf der Benutzerseite (userAccount.php) kannst du Texte über den „+“-Button hinzufügen.
+   Diese werden automatisch in der Datenbank gespeichert.
+
+   ### Abmelden:
+   Über den Button „Abmelden“ wird die aktuelle Session beendet.

@@ -1,7 +1,5 @@
 <?php
     session_start();
-    session_unset();
-    session_destroy();
-
-    header("Location: index.php?msg=logged_out");
+    $_SESSION["flash_message"] = "Sie sind jetzt abgemeldet!";
+    header("Location: index.php");
     exit;
