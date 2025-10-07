@@ -103,7 +103,7 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
   <br>
   <em>Abbildung 4: Benutzerseite</em>
 </p>
-<br>
+<br><br>
 <p align="center">
   <img src="public/assets/img/php-app3.png" alt="Nach erfolgreicher Abmeldung" width="600" />
   <br>
