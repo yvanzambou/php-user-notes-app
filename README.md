@@ -85,19 +85,19 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
   <br>
   <em>Abbildung 1: Registrierungsseite</em>
 </p>
-
+<br><br>
 <p align="center">
   <img src="public/assets/img/php-app2.png" alt="Anmeldungsseite mit Flash-Message" width="600" />
   <br>
   <em>Abbildung 2: Anmeldungsseite mit Flash-Message</em>
 </p>
-
+<br><br>
 <p align="center">
   <img src="public/assets/img/php-app4.png" alt="Anmeldeversuche mit falschen Daten" width="600" />
   <br>
   <em>Abbildung 3: Anmeldeversuche mit falschen Daten</em>
 </p>
-
+<br><br>
 <p align="center">
   <img src="public/assets/img/php-app5.png" alt="Benutzerseite" width="600" />
   <br>
