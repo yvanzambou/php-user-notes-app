@@ -21,10 +21,10 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 
 | Bereich | Technologie |
 |----------|--------------|
-| Backend | PHP 8.2.12 |
+| Backend | PHP v8.2.12 |
 | Datenbank | MySQL / MariaDB |
-| Server | Apache (XAMPP) |
-| Styling | HTML5, CSS3 |
+| Server | Apache (in XAMPP) |
+| Styling | CSS3 |
 | Sicherheit | Passwort-Hashing, Prepared Statements, Sessions |
 
 ---
@@ -75,6 +75,16 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 - Keine SQL-Injections dank Prepared Statements
 - Session-basierte Zugriffskontrolle für geschützte Seiten
 - UTF-8 / UTF-8mb4 für internationale Zeichenunterstützung
+
+---
+
+## 🖼️ Screenshots  
+
+![Registrierungsseite](public/assets/img/php-app1.png "Registrierungsseite")
+![Anmeldung-Seite mit Flash-Message](public/assets/img/php-app2.png "Anmeldungsseite mit Flash-Message")
+![Anmeldeversuche mit falschen Daten](public/assets/img/php-app4.png "Anmeldeversuche mit falschen Daten")
+![Benutzerseite](public/assets/img/php-app5.png "Benutzerseite")
+![Erfolgreiche Abmeldung](public/assets/img/php-app3.png "Anmeldung-Seite nach erfolgreicher Abmeldung")
 
 ---
 
