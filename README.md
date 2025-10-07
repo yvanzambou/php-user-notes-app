@@ -48,9 +48,7 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
       - Im Browser aufrufen: http://localhost/php-user-notes-app/public/
 
 4. **Automatische Datenbankerstellung**
-      - Beim ersten Start erstellt das Skript automatisch:
-      - die Datenbank **userdb**
-      - die Tabellen **users** und **notes**
+      - Beim ersten Start erstellt das Skript automatisch: die Datenbank **userdb** und die Tabellen **users** und **notes**.
 
 ---
 
