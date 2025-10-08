@@ -99,15 +99,21 @@ Sie wurde mit **PDO** und **MySQL (MariaDB)** entwickelt und eignet sich ideal a
 </p>
 <br><br>
 <p align="center">
+  <img src="public/assets/img/php-app7.png" alt="Anmeldeversuche mit vergebenen Daten" width="600" />
+  <br>
+  <em>Abbildung 4: Anmeldeversuche mit vergebenen Daten</em>
+</p>
+<br><br>
+<p align="center">
   <img src="public/assets/img/php-app5.png" alt="Benutzerseite" width="600" />
   <br>
-  <em>Abbildung 4: Benutzerseite</em>
+  <em>Abbildung 5: Benutzerseite</em>
 </p>
 <br><br>
 <p align="center">
   <img src="public/assets/img/php-app3.png" alt="Nach erfolgreicher Abmeldung" width="600" />
   <br>
-  <em>Abbildung 5: Nach erfolgreicher Abmeldung</em>
+  <em>Abbildung 6: Nach erfolgreicher Abmeldung</em>
 </p>
 
 ---
