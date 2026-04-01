@@ -1,5 +1,5 @@
 <?php
-    require "../app/db/dbConnect.php";
+    require __DIR__ . "/../app/db/dbConnect.php";
 
     $error = "";
 

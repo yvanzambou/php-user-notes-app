@@ -1,71 +1,67 @@
 <?php
-    require "../app/db/dbConnect.php";
+session_start();
+require __DIR__ . "/../app/db/dbConnect.php";
 
-    $error = "";
+$error = "";
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// Flash-Message abholen (falls vorhanden)
+$flashMessage = $_SESSION["flash_message"] ?? null;
+unset($_SESSION["flash_message"]);
 
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $stmt = $con->prepare("SELECT * FROM users WHERE username=:username");
-        $stmt->bindParam(":username", $username);
-        $stmt->execute();
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC); // nur eine Zeile holen
+    $stmt = $con->prepare("SELECT * FROM users WHERE username=:username");
+    $stmt->bindParam(":username", $username);
+    $stmt->execute();
 
-        if ($user) {
-            // Benutzername existiert, dann Kennwort prüfen
-            $hashedPassword = $user["password"];
-            $passwordIsCorrect = password_verify($password, $hashedPassword);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($passwordIsCorrect) {
-                session_start();
-                $_SESSION["username"] = $user["username"];
-                header("Location: userAccount.php");
-                exit;
-            } else {
-                $error = "Benutzername oder Kennwort inkorrekt.";
-            }
+    if ($user) {
+        $hashedPassword = $user["password"];
+
+        if (password_verify($password, $hashedPassword)) {
+            $_SESSION["username"] = $user["username"];
+            header("Location: userAccount.php");
+            exit;
         } else {
-            // Kein Benutzer mit diesem Namen gefunden
             $error = "Benutzername oder Kennwort inkorrekt.";
         }
+    } else {
+        $error = "Benutzername oder Kennwort inkorrekt.";
     }
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <title>Anmeldung</title>
-    </head>
-    <body>
-        <?php
-            session_start();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Anmeldung</title>
+</head>
+<body>
 
-            if (isset($_SESSION["flash_message"])) {
-                echo '<div id="flash-message" class="success-message">' . htmlspecialchars($_SESSION["flash_message"]) . '</div>';
-                unset($_SESSION["flash_message"]);
-                session_unset();
-                session_destroy();
-            }
+    <?php if ($flashMessage): ?>
+        <div id="flash-message" class="success-message">
+            <?= htmlspecialchars($flashMessage) ?>
+        </div>
+    <?php endif; ?>
 
-            if (!empty($error)): ?>
-                <div class="error-message"><?= htmlspecialchars($error) ?></div>
-            <?php endif;
-        ?>
+    <?php if (!empty($error)): ?>
+        <div class="error-message"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
 
-        <form action="index.php" method="POST"  class="card">
-            <h2>Anmeldung</h2>
-            <input type="text" name="username" placeholder="Benutzername" required value="<?= htmlspecialchars($username ?? '') ?>" autocomplete="off">
-            <input type="password" name="password" placeholder="Kennwort" required value="<?= htmlspecialchars($password ?? '') ?>" autocomplete="off">
-            <button type="submit">Anmelden</button>
-            <p>noch nicht registriert? <a href="register.php">registrieren</a></p>
-        </form>
+    <form action="index.php" method="POST" class="card">
+        <h2>Anmeldung</h2>
+        <input type="text" name="username" placeholder="Benutzername" required value="<?= htmlspecialchars($username ?? '') ?>" autocomplete="off">
+        <input type="password" name="password" placeholder="Kennwort" required autocomplete="off">
+        <button type="submit">Anmelden</button>
+        <p>noch nicht registriert? <a href="register.php">registrieren</a></p>
+    </form>
 
-        <script src="assets/js/jscript.js"></script>
-    </body>
+    <script src="assets/js/jscript.js"></script>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <?php
-    require "../app/db/dbConnect.php";
-
+    require __DIR__ . "/../app/db/dbConnect.php";
     session_start();
+
 
     // Wenn Benutzer nicht eingeloggt ist → zurück zum Login
     if (!isset($_SESSION["username"])) {
