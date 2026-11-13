@@ -1,0 +1,29 @@
+# Wird von `docker compose up` automatisch dazugeladen (nur für die Entwicklung).
+# Produktionsnah ohne diese Datei starten:
+#   docker compose -f docker-compose.yml up -d --build
+services:
+  app:
+    # Entwicklungs-Image mit Composer und PHPUnit
+    build:
+      target: development
+    image: php-notes-app:dev
+    environment:
+      APP_ENV: development
+    # Quellcode live einbinden – vendor/ bleibt bewusst aus dem Image.
+    volumes:
+      - ./public:/var/www/html/public
+      - ./src:/var/www/html/src
+      - ./templates:/var/www/html/templates
+      - ./tests:/var/www/html/tests
+      - ./database:/var/www/html/database:ro
+      - ./composer.json:/var/www/html/composer.json
+      - ./phpunit.xml.dist:/var/www/html/phpunit.xml.dist
+      - ./docker/php/app.dev.ini:/usr/local/etc/php/conf.d/zz-dev.ini:ro
+
+  db:
+    # Nur lokal erreichbar, z. B. für DBeaver/HeidiSQL.
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      # Legt beim ersten Start die Datenbank "<DB_NAME>_test" für die PHPUnit-Tests an.
+      - ./docker/mariadb/02-test-database.sh:/docker-entrypoint-initdb.d/02-test-database.sh:ro

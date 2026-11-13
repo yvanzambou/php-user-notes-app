@@ -1,0 +1,29 @@
+{
+  "name": "yvanzambou/php-user-notes-app",
+  "description": "Notizen-App mit Registrierung, Login und persönlicher Notizverwaltung.",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.3",
+    "ext-mbstring": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": { "App\\": "src/" },
+    "files": ["src/helpers.php"]
+  },
+  "autoload-dev": {
+    "psr-4": { "Tests\\": "tests/" }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "test": "phpunit",
+    "lint": "find src public templates tests -name '*.php' -print0 | xargs -0 -n1 php -l"
+  }
+}

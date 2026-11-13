@@ -1,73 +1,58 @@
 <?php
-    require __DIR__ . "/../app/db/dbConnect.php";
 
-    $error = "";
+declare(strict_types=1);
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+require __DIR__ . '/../src/bootstrap.php';
 
-        $username = $_POST["username"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+use App\Auth;
+use App\Csrf;
+use App\Database;
+use App\Flash;
+use App\Http\Http;
+use App\Repository\UserRepository;
+use App\Validation\RegistrationValidator;
+use App\View;
 
-        $stmt = $con->prepare("SELECT username, email FROM users WHERE username = :username OR email = :email");
-        $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":email", $email);
-        $stmt->execute();
+Auth::requireGuest();
 
-        $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
+$values = ['name' => '', 'username' => '', 'email' => '', 'password' => ''];
+$errors = [];
 
-        if ($existingUser) {
-            // Prüfen, was genau doppelt ist
-            if ($existingUser["username"] === $username && $existingUser["email"] === $email) {
-                $error = "Benutzername und E-Mail bereits vergeben.";
-            } elseif ($existingUser["username"] === $username) {
-                $error = "Benutzername bereits vergeben.";
-            } elseif ($existingUser["email"] === $email) {
-                $error = "E-Mail bereits registriert.";
-            }
-        } else {
-            // registrieren
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            registerUser($username, $email, $hashedPassword);
+if (Http::isPost()) {
+    Csrf::requireValid();
+
+    ['values' => $values, 'errors' => $errors] = RegistrationValidator::validate($_POST);
+    $users = new UserRepository(Database::connection());
+
+    if ($errors === []) {
+        if ($users->usernameExists($values['username'])) {
+            $errors['username'] = 'Dieser Benutzername ist bereits vergeben.';
+        }
+        if ($users->emailExists($values['email'])) {
+            $errors['email'] = 'Mit dieser E-Mail-Adresse gibt es schon ein Konto.';
         }
     }
 
-    function registerUser($username, $email, $password) {
-            global $con;
-            
-            $stmt = $con->prepare("INSERT INTO users(username, email, password) VALUES(:username, :email, :password)");
-            $stmt->bindParam(":username", $username);
-            $stmt->bindParam(":email", $email);
-            $stmt->bindParam(":password", $password);
-            $stmt->execute();
-
-            session_start();
-            $_SESSION["flash_message"] = "Registrierung erfolgreich! Sie können sich jetzt anmelden.";
-            header("Location: index.php");
-            exit;
+    if ($errors === []) {
+        try {
+            $users->create(
+                $values['name'],
+                $values['username'],
+                $values['email'],
+                password_hash($values['password'], PASSWORD_DEFAULT),
+            );
+            Flash::success('Dein Konto wurde erstellt. Du kannst dich jetzt anmelden.');
+            Http::redirect('/login.php');
+        } catch (PDOException $e) {
+            // SQLSTATE 23000: Ein paralleler Request war schneller (UNIQUE-Constraint der Datenbank).
+            if ($e->getCode() !== '23000') {
+                throw $e;
+            }
+            $errors['username'] = 'Benutzername oder E-Mail-Adresse sind bereits vergeben.';
+        }
     }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <title>Registrierung</title>
-    </head>
-    <body>
-        <?php if (!empty($error)): ?>
-            <div class="warn-message"><?= htmlspecialchars($error) ?></div>
-        <?php endif; ?>
+    $values['password'] = ''; // Passwörter werden nie wieder ins Formular geschrieben
+}
 
-        <form action="register.php" method="POST"  class="card">
-            <h2>Registrierung</h2>
-            <input type="text" name="username" placeholder="Name" required value="<?= htmlspecialchars($username ?? '') ?>" autocomplete="off">
-            <input type="text" name="email" placeholder="e-Mail" required value="<?= htmlspecialchars($email ?? '') ?>" autocomplete="off">
-            <input type="password" name="password" placeholder="Kennwort" required>
-            <button type="submit">Registrieren</button>
-            <p>schon registriert? <a href="index.php">einloggen</a> </p>
-        </form>
-    </body>
-</html>
+View::render('register', ['title' => 'Konto erstellen', 'values' => $values, 'errors' => $errors], $errors ? 422 : 200);

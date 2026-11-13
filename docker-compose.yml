@@ -1,30 +1,49 @@
+name: php-notes
+
 services:
   app:
-    build: .
-    container_name: php-notes-app
+    build:
+      context: .
+      target: runtime
+    image: php-notes-app:latest
+    restart: unless-stopped
     ports:
-      - "8080:80"
-    env_file:
-      - .env
-    volumes:
-      - .:/var/www/html
+      - "${APP_PORT:-8080}:80"
+    # Bewusst kein env_file: Die App bekommt nur, was sie braucht (nicht das Root-Passwort).
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      APP_TIMEZONE: ${APP_TIMEZONE:-Europe/Berlin}
+      DB_HOST: ${DB_HOST:-db}
+      DB_NAME: ${DB_NAME:-notes}
+      DB_USER: ${DB_USER:-notes_user}
+      DB_PASS: ${DB_PASS:-notes_password}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
 
   db:
-    image: mariadb:latest
-    container_name: php-notes-db
-    restart: always
-    env_file:
-      - .env
+    image: mariadb:11.4
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_notes_password}
+      MARIADB_DATABASE: ${DB_NAME:-notes}
+      MARIADB_USER: ${DB_USER:-notes}
+      MARIADB_PASSWORD: ${DB_PASS:-notes_password}
+      MARIADB_AUTO_UPGRADE: "1"
     volumes:
       - db_data:/var/lib/mysql
-      - ./db-init:/docker-entrypoint-initdb.d
+      # Wird nur beim allerersten Start (leeres Volume) ausgeführt.
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   db_data:

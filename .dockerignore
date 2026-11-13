@@ -1,0 +1,14 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+vendor
+docs
+database
+.phpunit.cache
+.idea
+.vscode
+docker-compose*.yml
+Dockerfile
+README.md

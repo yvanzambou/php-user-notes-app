@@ -1,0 +1,15 @@
+# Geheimnisse & lokale Konfiguration – niemals committen
+.env
+.env.*
+!.env.example
+
+# Abhängigkeiten & Build-Artefakte
+/vendor/
+.phpunit.cache/
+.phpunit.result.cache
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
